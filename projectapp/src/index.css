@@ -659,4 +659,26 @@
   height: 300px;
 }
 
+.footer{
+  padding: 30px 30px;
+  background-color: rgb(45, 46, 48);
+  color: white;
+  display: flex;
+  justify-content: center;
+}
 
+.footer-image{
+  flex-grow: 0.5;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.footer-image img{
+  width: 200px;
+  text-align: center;
+}
+.footer-p{
+  margin: auto 1px;
+  text-align: center;
+  align-items: center;
+}

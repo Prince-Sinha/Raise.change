@@ -1,6 +1,7 @@
 import { Outlet, useLoaderData, useSubmit } from 'react-router-dom';
 import SideBar from '../components/SideBar';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import { getTokenDuration} from './../util/auth'
 
@@ -28,6 +29,7 @@ export default function(){
          <SideBar />
          <Outlet />
        </main>
+       <Footer />
       
     </>
 }
