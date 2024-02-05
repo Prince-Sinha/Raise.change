@@ -27,10 +27,10 @@ export default function Signupform(){
     e.preventDefault();
     const form = new FormData(e.target);
     const formJson = Object.fromEntries(form.entries());
-   
-
-    const res = await fetch("/api/v1/users/signup", {
-      method: e.target.method,
+    console.log(formJson)
+   try{
+    const res = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/users/signup`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -38,7 +38,7 @@ export default function Signupform(){
     })
 
     const resData = await res.json();
-    // console.log(resData)
+    console.log(resData)
     if(!res.ok){
       toast.error(resData.message, {
         position: "top-right",
@@ -52,6 +52,7 @@ export default function Signupform(){
         });     
         return;
     }
+
     const token = resData.token;
 
     localStorage.setItem('token', token);
@@ -73,7 +74,19 @@ export default function Signupform(){
     setTimeout(()=>{
       navigate("/", {state: true});
     },5000)
-    
+   }catch(err){
+    toast.error(err, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });     
+      return;
+   }
   
   };
     
@@ -147,7 +160,7 @@ export default function Signupform(){
                    label="Confirm Password"/>
             </FormControl>
 
-            <button className="btn">Create Account</button>
+            <button type="submit" className="btn">Create Account</button>
        </Form>
        </>
     );

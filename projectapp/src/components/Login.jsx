@@ -1,12 +1,19 @@
-import {IconButton,OutlinedInput,InputLabel,InputAdornment,FormControl,TextField} from '@mui/material';
+import {IconButton,OutlinedInput,InputLabel,InputAdornment,FormControl,TextField, Select,MenuItem} from '@mui/material';
 import {Visibility,VisibilityOff} from '@mui/icons-material';
 import {useState} from 'react'
-import { Form ,NavLink } from 'react-router-dom';
+import { Form ,NavLink,Navigate,redirect } from 'react-router-dom';
 
 export default function Login(){
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {event.preventDefault(); };
+    const [role , setRole] = useState('');
+    const handleChange1= (event) => {
+        setRole(event.target.value);
+        return redirect('/login/dept')
+        
+    }
+   
 
     return <section id="login">
         <div className="login-logo">
@@ -14,7 +21,19 @@ export default function Login(){
         </div>
         <div className='login-form'>
            <Form method="post">
+           <FormControl fullWidth name="role" required sx={{ overflow: "hidden",marginTop:1 , marginBottom:2 }} color="success">
+                    <InputLabel id="demo-simple-select-required-label">Roles</InputLabel>
+                    <Select name="State" labelId="demo-simple-select-required-label" id="demo-simple-select-required"
+                     value={role} label="Roles" onChange={handleChange1}
+                    >
+                     <MenuItem value={'public'}>Normal User</MenuItem>
+                     <NavLink to="/login/dept"><MenuItem value={'dept'}>Authority</MenuItem></NavLink>
+               
+                     </Select>
+       
+                 </FormControl>
              <div>
+             
              <TextField
                      label="Phone Number"
                      id="outlined-start-adornment"
@@ -24,10 +43,11 @@ export default function Login(){
                      type="number"
                      name="phoneNumber"
                      color='success'
+                     required
               />
              </div>
              <div>
-             <FormControl sx={{ marginTop: 1 }} fullWidth variant="outlined">
+             <FormControl required sx={{ marginTop: 1 }} fullWidth variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password" color='success'>Password</InputLabel>
                   <OutlinedInput 
                       name="password" 

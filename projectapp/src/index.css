@@ -246,13 +246,19 @@
   text-align: center;
   list-style: none;
 }
-.nav-list ul li a{
+.nav-list ul li a,
+.nav-list ul li button{
   display: block;
   color: rgba(163, 167, 170, 0.733);
   font-size: larger;
   text-decoration: none;
   padding: 5px 0;
   border-radius: 5px;
+  background: transparent;
+  border: none;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 
@@ -309,11 +315,25 @@
   display: block;
   padding: 3px 10px;
 }
-.side ul .act button{
+.side ul button{
   background-color: #5ebc67de;
   color:white;
  }
-
+.side ul a{
+  display: inline-block;
+  
+  text-decoration: none;
+  width: 300px;
+  padding: 10px 0;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: larger;
+  font-weight: 500;
+  color: #8f9491;
+  align-items: center;
+  text-align: center;
+  padding: auto ;
+}
 
 .side ul li button{
   width: 300px;
@@ -321,10 +341,18 @@
   background-color: transparent;
   border: none;
   border-radius: 5px;
-  font-size: larger;
+  
   font-weight: 500;
   color: #8f9491;
 
+}
+
+.side ul li a:hover,
+.side ul li a.active{
+  background-color: #5EBC67;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
 }
 
 .side ul li button:hover{
@@ -393,8 +421,11 @@
 .spt-det-btn{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
-
+.spt-det-btn button{
+  min-width: 200px;
+}
 .content-div ul li button{
   width: 170px;
   height: 35px;
@@ -412,6 +443,7 @@
   background-color: #5EBC67;
   color: white;
   top: -3px;
+  cursor: pointer;
 }
 
 
@@ -622,5 +654,9 @@
   font-size: small;
 }
 
+.qrcode img{
+  min-width: 250px;
+  height: 300px;
+}
 
 

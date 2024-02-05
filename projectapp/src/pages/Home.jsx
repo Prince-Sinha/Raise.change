@@ -17,17 +17,43 @@ export default function Home(){
 
    useEffect(()=>{
       async function fetchPost(){
-
-         try{
-            const response = await fetch('/api/v1/posts/unresolved');
+            const response = await fetch('https://vast-gray-mackerel-wear.cyclic.app/api/v1/posts/unresolved');
             const resData = await response.json();
+            if(!response.ok){
+               toast.error(resData.message, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light"
+                  });
+                  return;
+            }
 
             setUnresolved(resData.data.post);
 
+
             
             if(id){
-               const res = await fetch(`/api/v1/users/${id}`);
+               const res = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/users/${id}`);
                const userresData = await res.json();
+               if(!res.ok){
+                  toast.error(resData.message, {
+                     position: "top-right",
+                     autoClose: 5000,
+                     hideProgressBar: false,
+                     closeOnClick: true,
+                     pauseOnHover: true,
+                     draggable: true,
+                     progress: undefined,
+                     theme: "light"
+                     });
+                     return;
+               }
+
                userresData.data.user.supported.forEach((el)=>{
                      setSupport((prev)=>{
                         const newsup = [el,...prev];
@@ -37,18 +63,7 @@ export default function Home(){
                
             }
 
-         }catch(err){
-            toast.error('Something went wrong!', {
-               position: "top-right",
-               autoClose: 5000,
-               hideProgressBar: false,
-               closeOnClick: true,
-               pauseOnHover: true,
-               draggable: true,
-               progress: undefined,
-               theme: "light"
-               });
-         }
+         
       }
       
       fetchPost();
@@ -81,7 +96,7 @@ export default function Home(){
           supported : supported
         }
       //   console.log(supported);
-        const res = await fetch(`/api/v1/users/${id}`,{
+        const res = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/users/${id}`,{
            method : 'PATCH',
            headers : {
               'Content-Type' : 'application/json'
@@ -107,9 +122,6 @@ export default function Home(){
          const newsup = [postid,...prev];
          return newsup;
         });
-        
-
-
    }
 
    const date = new Date();
@@ -141,7 +153,7 @@ export default function Home(){
                     <li><p className='limited-paragraph'>{el.problemStatement}</p></li>
                     <div className='spt-det-btn'>
                     {support.includes(el._id) || el.user._id===id ? <Alert sx={{border: 0}} variant="outlined" severity="success">Supported</Alert>:<li><button onClick={()=>handleSupport(el._id)}>Support</button></li>}
-                    <li><NavLink to={`posts/${el._id}`} end><button>Detail</button></NavLink></li>
+                    <li><NavLink to={`/posts/${el._id}`} end><button>Detail</button></NavLink></li>
                     </div>
                   </ul>
                 <div className='content-div-info'>
@@ -159,7 +171,7 @@ export default function Home(){
                
                {el.photo ?
                <div className='content-div-img'>
-                   <img src={`/postimg/${el.photo}`} alt="" /></div>: <div></div> }
+                   <img src={`https://vast-gray-mackerel-wear.cyclic.app/postimg/${el.photo}`} alt="" /></div>: <div></div> }
               
                
         </div>

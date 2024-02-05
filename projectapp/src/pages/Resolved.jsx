@@ -2,49 +2,61 @@ import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRen
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 import PollOutlinedIcon from '@mui/icons-material/PollOutlined';
+import { Typography } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Create from './Create'
+
 import { useState,useEffect } from 'react';
 import { NavLink ,json } from 'react-router-dom';
 
 export default function Home(){
-   const [unresolved,setUnresolved] = useState([]);
+   const [resolved,setresolved] = useState([]);
    const [support,setSupport] = useState([]);
    const id = localStorage.getItem('_id');
 
    useEffect(()=>{
       async function fetchPost(){
 
-         try{
-            const response = await fetch('/api/v1/posts/resolved');
+            const response = await fetch('https://vast-gray-mackerel-wear.cyclic.app/api/v1/posts/resolved');
             const resData = await response.json();
+            if(!response.ok){
+               toast.error(resData.message, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light"
+                  });
+            }
 
-            setUnresolved(resData.data.post);
+            setresolved(resData.data.post);
 
-         }catch(err){
-            toast.error('Something went wrong!', {
-               position: "top-right",
-               autoClose: 5000,
-               hideProgressBar: false,
-               closeOnClick: true,
-               pauseOnHover: true,
-               draggable: true,
-               progress: undefined,
-               theme: "light"
-               });
-         }
+         
       }
       
       fetchPost();
 
    },[]);
 
-    return (
+    if(resolved.length===0){
+      return (
+         <div className="article" >
+         <CheckCircleOutlineIcon sx={{fontSize: '40px' }} color = 'success' />
+         <Typography variant="h6" sx={{textAlign:'center', padding: 1}} color='primary'>All Problem got Resolved by Respective Authority</Typography>
+         
+         <Create />
+      </div>
+      )
+    }
 
-    <div id="bar-sider">
+    return (<div id="bar-sider">
     <ToastContainer
          position="top-right"
          autoClose={5000}
@@ -88,7 +100,7 @@ export default function Home(){
                
                {el.photo ?
                <div className='content-div-img'>
-                   <img src={`postimg/${el.photo}`} alt="" /></div>: <div></div> }
+                   <img src={`https://vast-gray-mackerel-wear.cyclic.app/postimg/${el.photo}`} alt="" /></div>: <div></div> }
               
                
         </div>

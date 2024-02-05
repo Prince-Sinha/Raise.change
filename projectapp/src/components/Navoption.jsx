@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { Form ,NavLink, useLocation , useRouteLoaderData} from 'react-router-dom'
 import ListIcon from '@mui/icons-material/List';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
@@ -26,6 +26,13 @@ export default function({token}){
             {token && <li><NavLink>Notification</NavLink></li>}
             <li><NavLink>Helpline</NavLink></li>
             <li onClick={handle}><QrCode /></li>
+            <li>
+                { token &&
+                    <Form action='/logout' method='post'>
+                         <button>Logout</button>
+                    </Form>
+                }
+             </li>
         </ul>
           
     </section>

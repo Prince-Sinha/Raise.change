@@ -31,7 +31,10 @@ export default function AlertDialog() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <img sx={{objectFit : 'cover'}} src="./../../qrcode.jpg" alt="" />
+            <div className="qrcode">
+                <img sx={{ width: 100,objectFit : 'cover'}} src="./../../qrcode.jpg" alt="" />
+            </div>
+          
           </DialogContentText>
         </DialogContent>
       </Dialog>

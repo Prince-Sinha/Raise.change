@@ -24,14 +24,14 @@ export default function Header() {
         <section id="header">
             <div id="nav-bar">
                 <div className="nav-image">
-                    <img src="./../2R.png" alt="" />
+                    <NavLink to="/"><img src="./../2R.png" alt="" /></NavLink>
                 </div>
                 <div className="navoption">
                     <ul>
                         <li><QrCode /></li>
                         {token && <li> <a href="/notification"><Badge color="secondary" variant="dot"> <NotificationsOutlinedIcon /></Badge></a></li>}
                         <li><a href="">Helpline</a></li>
-                        <li>{token && <Avatar sx={{marginLeft:1, marginRight:1,alignItems:'center'}} alt="Profile Picture" src={`/userimg/user2.jpg`} />}</li>
+                        <li>{token && <Avatar sx={{marginLeft:1, marginRight:1,alignItems:'center'}} alt="Profile Picture" src={`https://vast-gray-mackerel-wear.cyclic.app/userimg/user2.jpg`} />}</li>
                         <li>{!token && <NavLink to="/login">LogIn/SignUp</NavLink>}</li>
                          <li>
                             { token &&

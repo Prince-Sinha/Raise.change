@@ -29,10 +29,21 @@ export function tokenLoader(){
 }
 export function checkAuthLoader() {
     
-    const token = getAuthToken();
+    const token = getAuth();
     
     if (!token) {
       return redirect('/login');
+    }
+   
+    return null;
+  }
+
+  export function checkAuthLoaderAdmin() {
+    
+    const name = localStorage.getItem('dept');
+    
+    if (!name) {
+      return redirect('/login/dept');
     }
    
     return null;

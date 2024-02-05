@@ -13,11 +13,11 @@ export default function SideBar(){
          <div className="side">
             {/* {console.log(activeClass)} */}
             <ul>
-                <li className={activeClass==='article'?'act':undefined}><NavLink to='/article' onClick={() => handleChange('article')} end><button>Article</button></NavLink></li>
-                <li className={activeClass === 'unresolved'?'act':undefined}><NavLink to='/' end><button>Unresolved</button></NavLink></li>
-                <li className={activeClass==='resolved'?'act':undefined}><NavLink to="/resolved" onClick={()=>handleChange('resolved')} end><button>Resolved</button></NavLink></li>
-                {token && <li className={activeClass==='post'?'act':undefined}><NavLink to="/posts" onClick={()=>handleChange('post')} end><button>Posts</button></NavLink></li>}
-                {token && <li className={activeClass==='profile'?'act':undefined}><NavLink to="/profile" onClick={()=>handleChange('profile')} end><button>Profile</button></NavLink></li>}
+                <li><NavLink to='/article' className={({isActive})=> isActive?'active':undefined} end>Article</NavLink></li>
+                <li><NavLink to='/' className={({isActive})=> isActive?'active':undefined} end>Unresolved</NavLink></li>
+                <li><NavLink to="/resolved" className={({isActive})=> isActive?'active':undefined} end>Resolved</NavLink></li>
+                {token && <li><NavLink to="/posts" className={({isActive})=> isActive?'active':undefined} end>Posts</NavLink></li>}
+                {token && <li><NavLink to="/profile" className={({isActive})=> isActive?'active':undefined} end>Profile</NavLink></li>}
             </ul>
          </div>
        
