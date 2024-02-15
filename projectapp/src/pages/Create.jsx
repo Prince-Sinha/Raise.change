@@ -49,12 +49,12 @@ export default function FormDialog() {
             if(id){
               
                 formJson.user = id;
-                const userresp = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/users/${id}`);
+                const userresp = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/users/${id}`);
                 const user = await userresp.json();
                 formJson.State = user.data.user.State;
                 formJson.city = user.data.user.city;
                 // multer wali fetch req to generate string 
-                const response = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/posts/create`,{
+                const response = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/posts/create`,{
                   method : 'POST',
                   headers : {
                     'Content-Type' : 'application/json'

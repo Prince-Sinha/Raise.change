@@ -26,7 +26,7 @@ export default function Department(){
    useEffect(()=>{
     async function fetchPost(){
         
-          const res = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/posts/dept/${value==0 ?'unres':'res'}/${dept}`);
+          const res = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/posts/dept/${value==0 ?'unres':'res'}/${dept}`);
           const resData = await res.json();
        
          
@@ -125,7 +125,7 @@ export default function Department(){
                
                {el.photo ?
                <div className='content-div-img'>
-                   <img src={`https://vast-gray-mackerel-wear.cyclic.app/postimg/${el.photo}`} alt="" /></div>: <div></div> }
+                   <img src={`https://zealous-eel-hosiery.cyclic.app/postimg/${el.photo}`} alt="" /></div>: <div></div> }
               
                
         </div>

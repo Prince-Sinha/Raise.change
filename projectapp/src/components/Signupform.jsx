@@ -29,7 +29,7 @@ export default function Signupform(){
     const formJson = Object.fromEntries(form.entries());
     console.log(formJson)
    try{
-    const res = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/users/signup`, {
+    const res = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/users/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -16,7 +16,7 @@ export default function LoginDept(){
         const form = new FormData(e.target);
         const formJson = Object.fromEntries(form.entries());
         console.log(formJson)
-        const response = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/users/dept/login`,{
+        const response = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/users/dept/login`,{
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json' 
@@ -37,7 +37,7 @@ export default function LoginDept(){
                 });     
                 return;
         }
-        const res = await fetch(`https://vast-gray-mackerel-wear.cyclic.app/api/v1/users/${resData.data.user.id}`)
+        const res = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/users/${resData.data.user.id}`)
         const reData = await res.json();
         if(!response.ok){
             toast.error(reData.message, {

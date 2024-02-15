@@ -665,6 +665,7 @@
   color: white;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .footer-image{
