@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   {path : '/createPost' , element : <Create />},
   {path : '/dept',element : <Department />, loader: checkAuthLoaderAdmin},
   {path : '/login/dept' , element: <LoginDept />  },
-  {path : '/dept/posts/:id', element : <AuthDetail />,loader: checkAuthLoader}
+  {path : '/dept/posts/:id', element : <AuthDetail />}
   
   
 ])
