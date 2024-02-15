@@ -15,6 +15,7 @@ import Create from './pages/Create'
 import SignUp from './pages/SignUp'
 import Department from './pages/Department'
 import LoginDept from './pages/LoginDept'
+import AuthDetail from './pages/AuthDetail'
 import {createBrowserRouter , RouterProvider} from 'react-router-dom';
 import { action as logoutaction} from './pages/Logout'
 import { checkAuthLoader,tokenLoader ,checkAuthLoaderAdmin } from './util/auth'
@@ -38,7 +39,8 @@ const router = createBrowserRouter([
   {path : '/login' , element : <Auth /> , action : authAction},
   {path : '/createPost' , element : <Create />},
   {path : '/dept',element : <Department />, loader: checkAuthLoaderAdmin},
-  {path : '/login/dept' , element: <LoginDept />  }
+  {path : '/login/dept' , element: <LoginDept />  },
+  {path : '/dept/posts/:id', element : <AuthDetail />,loader: checkAuthLoader}
   
   
 ])

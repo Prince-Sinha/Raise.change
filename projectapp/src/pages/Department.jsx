@@ -107,7 +107,7 @@ export default function Department(){
                     <li><p className='limited-paragraph'>{el.problemStatement}</p></li>
                     <div className='spt-det-btn'>
                     {value==1? <Alert sx={{border: 0}} variant="outlined" severity="success">Solved</Alert>:<li><button onClick={()=>handleSupport(el._id)}>Mark as resolved</button></li>}
-                    <li><NavLink to={`/posts/${el._id}`} end><button>Detail</button></NavLink></li>
+                    <li><NavLink to={`/dept/posts/${el._id}`} end><button>Detail</button></NavLink></li>
                     </div>
                   </ul>
                 <div className='content-div-info'>
