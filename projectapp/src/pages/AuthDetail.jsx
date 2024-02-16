@@ -91,7 +91,7 @@ export default function AuthDetail(){
                 })
             }
          </div>
-         <Create />
+         
       </div>
     </>
 }
