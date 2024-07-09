@@ -49,7 +49,7 @@ export default function Detail(){
         formJSON.user = userid;
         formJSON.post = id;
 
-        const res = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/opinions`,{
+        const res = await fetch(`https://backend-92s7.onrender.com/api/v1/opinions`,{
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
@@ -79,7 +79,7 @@ export default function Detail(){
 
     useEffect(()=>{
         async function fetchData(){
-          const response = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/posts/${id}`);
+          const response = await fetch(`https://backend-92s7.onrender.com/api/v1/posts/${id}`);
           const resData = await response.json();
           if(!response.ok){
              console.log('ERR');
@@ -121,7 +121,7 @@ export default function Detail(){
             </ListItemButton>
             <div className='createdAt'><span><DriveFileRenameOutlineOutlinedIcon /></span> {postDetail.createdAt} </div>
         
-            {postDetail.photo ? <img src={`https://zealous-eel-hosiery.cyclic.app/postimg/${postDetail.photo}`} alt="" />:<p></p>}
+            {postDetail.photo ? <img src={`https://backend-92s7.onrender.com/postimg/${postDetail.photo}`} alt="" />:<p></p>}
             <p>{postDetail.problemStatement}</p>
             <h4>Your Opinion Matters</h4>
             </div>
@@ -143,7 +143,7 @@ export default function Detail(){
                 
                                 <ListItemButton sx={{marginBottom: 0, paddingBottom:0,paddingLeft: 0}}>
                                     <ListItemAvatar>
-                                    <Avatar alt="Profile Picture" src={`https://zealous-eel-hosiery.cyclic.app/userimg/${el.photo}`} />
+                                    <Avatar alt="Profile Picture" src={`https://backend-92s7.onrender.com/userimg/${el.photo}`} />
                                     </ListItemAvatar>
                                     <ListItemText primary={el.user.name} secondary={el.opinion} />
                                 </ListItemButton>

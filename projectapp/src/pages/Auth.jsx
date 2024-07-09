@@ -28,7 +28,7 @@ export async function action({ request }) {
       password: data.get('password'),
     };
 
-    const response = await fetch('https://zealous-eel-hosiery.cyclic.app/api/v1/users/login', {
+    const response = await fetch('https://backend-92s7.onrender.com/api/v1/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

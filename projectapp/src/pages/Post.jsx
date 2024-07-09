@@ -16,7 +16,7 @@ export default function Post(){
    useEffect(()=>{
      async function fetchPost(){
         try{
-            const response = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/users/posts/${id}`);
+            const response = await fetch(`https://backend-92s7.onrender.com/api/v1/users/posts/${id}`);
             const resData = await response.json();
             if(response.ok){
               setPost(resData.data.post);
@@ -80,7 +80,7 @@ export default function Post(){
                </div>
                {el.photo ? 
                <div className='content-div-img'>
-                   <img src={`https://zealous-eel-hosiery.cyclic.app/postimg/${el.photo}`} alt="" />
+                   <img src={`https://backend-92s7.onrender.com/postimg/${el.photo}`} alt="" />
                 </div> : <div></div> 
                 } 
               

@@ -5,7 +5,7 @@ export default function Footer(){
                 <img src="./../../1R.png" alt="" />
              </div>
              <div className="footer-p">
-                <p>&copy; All Copyright of this App is Reserved by <strong><i>Prince Sinha</i></strong></p>
+                <p>&copy; All Copyright of this App is Reserved by <strong><i>Raise.Change</i></strong></p>
              </div>
         </div>
     )

@@ -27,7 +27,7 @@ export default function AuthDetail(){
 
     useEffect(()=>{
         async function fetchData(){
-          const response = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/posts/${id}`);
+          const response = await fetch(`https://backend-92s7.onrender.com/api/v1/posts/${id}`);
           const resData = await response.json();
           if(!response.ok){
              console.log('ERR');
@@ -69,7 +69,7 @@ export default function AuthDetail(){
             </ListItemButton>
             <div className='createdAt'><span><DriveFileRenameOutlineOutlinedIcon /></span> {postDetail.createdAt} </div>
         
-            {postDetail.photo ? <img src={`https://zealous-eel-hosiery.cyclic.app/postimg/${postDetail.photo}`} alt="" />:<p></p>}
+            {postDetail.photo ? <img src={`https://backend-92s7.onrender.com/postimg/${postDetail.photo}`} alt="" />:<p></p>}
             <p>{postDetail.problemStatement}</p>
             <h4>Public Opinion</h4>
             </div>
@@ -82,7 +82,7 @@ export default function AuthDetail(){
                 
                                 <ListItemButton sx={{marginBottom: 0, paddingBottom:0,paddingLeft: 0}}>
                                     <ListItemAvatar>
-                                    <Avatar alt="Profile Picture" src={`https://zealous-eel-hosiery.cyclic.app/userimg/${el.photo}`} />
+                                    <Avatar alt="Profile Picture" src={`https://backend-92s7.onrender.com/userimg/${el.photo}`} />
                                     </ListItemAvatar>
                                     <ListItemText primary={el.user.name} secondary={el.opinion} />
                                 </ListItemButton>

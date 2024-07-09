@@ -21,7 +21,7 @@ export default function Profile(){
         async function fetchData(){
   
            try{
-              const response = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/users/${id}`);
+              const response = await fetch(`https://backend-92s7.onrender.com/api/v1/users/${id}`);
               const resData = await response.json();
   
               setData(resData.data.user);
@@ -63,7 +63,7 @@ export default function Profile(){
           {!edit ? <a > <ModeEditIcon color='primary'/> </a>: <button type="submit" >Save</button>}
         </div>
         <div className="profile-name">
-            <img src={`https://zealous-eel-hosiery.cyclic.app/userimg/user1.jpg`} alt="Profile" />
+            <img src={`https://backend-92s7.onrender.com/userimg/user1.jpg`} alt="Profile" />
             <p>{profileData.name}</p>
         </div>
 

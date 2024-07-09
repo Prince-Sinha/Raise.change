@@ -13,6 +13,8 @@ import Select from '@mui/material/Select';
 export default function FormDialog() {
   const [open, setOpen] = useState(false);
   const [dep, setDep] = useState('');
+  const [image , setImage] = useState('');
+  const [url , setUrl] = useState('');
   
 
   const handleClickOpen = () => {
@@ -27,6 +29,8 @@ export default function FormDialog() {
     const h= event.target.value;
     
   };
+
+  
 
   return (
     <>
@@ -44,17 +48,20 @@ export default function FormDialog() {
             let formJson = Object.fromEntries(formData.entries());
 
             formJson.photo = formJson.photo.name
-            
+            console.log(formJson);
             const id = localStorage.getItem('_id');
             if(id){
-              
+                
                 formJson.user = id;
-                const userresp = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/users/${id}`);
+                const userresp = await fetch(`https://backend-92s7.onrender.com/api/v1/users/${id}`);
                 const user = await userresp.json();
                 formJson.State = user.data.user.State;
                 formJson.city = user.data.user.city;
+                const [a,b] = [...formJson.dept.split(' ')];
+                formJson.dept = a + b;
+                console.log(formJson);
                 // multer wali fetch req to generate string 
-                const response = await fetch(`https://zealous-eel-hosiery.cyclic.app/api/v1/posts/create`,{
+                const response = await fetch(`https://backend-92s7.onrender.com/api/v1/posts/create`,{
                   method : 'POST',
                   headers : {
                     'Content-Type' : 'application/json'

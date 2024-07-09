@@ -21,7 +21,7 @@ export default function Home(){
    useEffect(()=>{
       async function fetchPost(){
 
-            const response = await fetch('https://zealous-eel-hosiery.cyclic.app/api/v1/posts/resolved');
+            const response = await fetch('https://backend-92s7.onrender.com/api/v1/posts/resolved');
             const resData = await response.json();
             if(!response.ok){
                toast.error(resData.message, {
@@ -100,7 +100,7 @@ export default function Home(){
                
                {el.photo ?
                <div className='content-div-img'>
-                   <img src={`https://zealous-eel-hosiery.cyclic.app/postimg/${el.photo}`} alt="" /></div>: <div></div> }
+                   <img src={`https://backend-92s7.onrender.com/postimg/${el.photo}`} alt="" /></div>: <div></div> }
               
                
         </div>
