@@ -42,7 +42,7 @@ export default function Post(){
 
      fetchPost();
 
-   },[]);
+   },[location]);
     if(post.length === 0){
       return <DefaultContent>You have not posted anything yet!</DefaultContent>
     }
