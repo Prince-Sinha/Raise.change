@@ -13,6 +13,7 @@ import { useEffect , useState } from 'react';
 import { redirect ,useParams} from 'react-router-dom';
 import Create from './Create';
 import {CircularProgress, Backdrop} from '@mui/material';
+import { useLocation } from 'react-router-dom';
 export default function Detail(){
 
     const { id } = useParams();
@@ -25,9 +26,15 @@ export default function Detail(){
     });
     const [opinionDetail , setOpinionDetail] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+
+    const ONChange = (event) => {
+        setInputValue(event.target.value); // Update state as the user types
+    };
 
     const handleChange= async (e)=>{
         e.preventDefault();
+        setInputValue('');
         setLoading(prev=> !prev);
         const form = new FormData(e.target);
         const formJSON = Object.fromEntries(form.entries());
@@ -96,7 +103,7 @@ export default function Detail(){
         }
  
         fetchData();
-     },[]);
+     },[handleChange]);
 
 
     return <>
@@ -112,6 +119,9 @@ export default function Detail(){
                 pauseOnHover
                 theme="light"
            />
+           <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+            <CircularProgress />
+          </Backdrop>
       <div id="bar-sider">
          <div className="post-detail">
             <div className="probS">
@@ -133,7 +143,7 @@ export default function Detail(){
             <div className='send-opinion'>
             
                 <form method="post" onSubmit={handleChange}>
-                  <TextField name="opinion" sx={{}} id="standard-basic" color='success' label="Write Your Opinion" variant="standard" />
+                  <TextField name="opinion" sx={{}} id="standard-basic" color='success' label="Write Your Opinion" variant="standard" value={inputValue} onChange={ONChange} />
                   <button type="sumbit"><SendIcon /></button>
                 </form>
                 
