@@ -4,18 +4,20 @@ import AddIcon from '@mui/icons-material/Add';
 import { deptlist } from '../data';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { redirect } from 'react-router-dom';
+import { redirect , useNavigate } from 'react-router-dom';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {CircularProgress, Backdrop} from '@mui/material';
 
 export default function FormDialog() {
   const [open, setOpen] = useState(false);
   const [dep, setDep] = useState('');
   const [image , setImage] = useState('');
   const [url , setUrl] = useState('');
-  
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -44,6 +46,7 @@ export default function FormDialog() {
           component: 'form',
           onSubmit: async (event) => {
             event.preventDefault();
+            setLoading(prev=> !prev);
             let formData = new FormData(event.currentTarget);
             let formJson = Object.fromEntries(formData.entries());
 
@@ -81,8 +84,10 @@ export default function FormDialog() {
                     progress: undefined,
                     theme: "light",
                     });
+                    setLoading(prev=> !prev);
                     return;
                 }
+                setLoading(prev=> !prev);
                 toast.success(`Successfully Created!`, {
                   position: "top-right",
                   autoClose: 5000,
@@ -93,9 +98,10 @@ export default function FormDialog() {
                   progress: undefined,
                   theme: "light"
                   });
-                
+                  setLoading(prev=> !prev);
                 setTimeout(()=>{
-                  redirect('/posts');
+                  handleClose();
+                  navigate('/posts');
                 },3000)
               
             }else{
@@ -127,7 +133,11 @@ export default function FormDialog() {
             pauseOnHover
             theme="light"
         />
+        
         <DialogTitle>Post</DialogTitle>
+        <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+            <CircularProgress />
+          </Backdrop>
         <DialogContent>
             <div>
             

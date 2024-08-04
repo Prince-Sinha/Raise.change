@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect , useState } from 'react';
 import { redirect ,useParams} from 'react-router-dom';
 import Create from './Create';
+import {CircularProgress, Backdrop} from '@mui/material';
 export default function Detail(){
 
     const { id } = useParams();
@@ -23,11 +24,11 @@ export default function Detail(){
         user:'', 
     });
     const [opinionDetail , setOpinionDetail] = useState([]);
-    
-
+    const [loading, setLoading] = useState(false);
 
     const handleChange= async (e)=>{
         e.preventDefault();
+        setLoading(prev=> !prev);
         const form = new FormData(e.target);
         const formJSON = Object.fromEntries(form.entries());
 
@@ -44,6 +45,7 @@ export default function Detail(){
                 progress: undefined,
                 theme: "light",
                 });
+                setLoading(prev=> !prev);
                 return;
         }
         formJSON.user = userid;
@@ -69,11 +71,13 @@ export default function Detail(){
                 progress: undefined,
                 theme: "light",
                 });
+                setLoading(prev=> !prev);
                 return;
+                
         }
-
+        setLoading(prev=> !prev);
         redirect(`/posts/${id}`);
-
+        
 
     }
 

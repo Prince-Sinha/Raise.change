@@ -8,8 +8,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Create from './Create'
 import DefaultContent from '../components/DefaultContent';
+import { useLocation } from 'react-router-dom';
+import {CircularProgress, Backdrop} from '@mui/material';
 export default function Post(){
    const [post , setPost] = useState([]);
+   const location = useLocation();
+   const [loading, setLoading] = useState(false);
 
    const id = localStorage.getItem('_id');
 
@@ -38,7 +42,7 @@ export default function Post(){
 
      fetchPost();
 
-   },[]);
+   },[location]);
     if(post.length === 0){
       return <DefaultContent>You have not posted anything yet!</DefaultContent>
     }

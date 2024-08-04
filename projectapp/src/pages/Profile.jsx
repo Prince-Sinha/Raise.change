@@ -4,6 +4,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Form } from 'react-router-dom'
 import {useState,useEffect} from 'react'
+import {CircularProgress, Backdrop} from '@mui/material';
+
 export default function Profile(){
     const [edit,setEdit]= useState(false);
     const [profileData,setData]= useState({
@@ -15,17 +17,19 @@ export default function Profile(){
         address : '',
     });
     const id = localStorage.getItem('_id');
+    const [loading, setLoading] = useState(false);
    
    
     useEffect(()=>{
         async function fetchData(){
-  
+          
            try{
+              setLoading(prev=> !prev);
               const response = await fetch(`https://backend-92s7.onrender.com/api/v1/users/${id}`);
               const resData = await response.json();
   
               setData(resData.data.user);
-              
+              setLoading(prev=> !prev);
   
            }catch(err){
             toast.error('Something went wrong!', {
@@ -38,6 +42,7 @@ export default function Profile(){
               progress: undefined,
               theme: "light"
               });
+              setLoading(prev=> !prev);
            }
         }
         
@@ -46,6 +51,9 @@ export default function Profile(){
      },[]);
 
     return <main id="profile">
+      <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+            <CircularProgress />
+      </Backdrop>
       <ToastContainer
          position="top-right"
          autoClose={5000}

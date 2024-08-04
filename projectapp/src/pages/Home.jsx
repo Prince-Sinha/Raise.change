@@ -9,14 +9,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import Create from './Create'
 import { useState,useEffect } from 'react';
 import { NavLink ,json } from 'react-router-dom';
+import {CircularProgress, Backdrop} from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 export default function Home(){
    const [unresolved,setUnresolved] = useState([]);
    const [support,setSupport] = useState([]);
+   const [loading, setLoading] = useState(true);
+   
    const id = localStorage.getItem('_id');
 
    useEffect(()=>{
       async function fetchPost(){
+            setLoading(true);
             const response = await fetch('https://backend-92s7.onrender.com/api/v1/posts/unresolved');
             const resData = await response.json();
             if(!response.ok){
@@ -30,6 +35,7 @@ export default function Home(){
                   progress: undefined,
                   theme: "light"
                   });
+                  setLoading(false);
                   return;
             }
 
@@ -62,6 +68,7 @@ export default function Home(){
                });
                
             }
+            setLoading(false);
 
          
       }
@@ -128,6 +135,9 @@ export default function Home(){
     return (
 
     <div id="bar-sider">
+      <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
+            <CircularProgress />
+      </Backdrop>
     <ToastContainer
          position="top-right"
          autoClose={5000}

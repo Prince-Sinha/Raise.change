@@ -9,6 +9,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Create from './Create'
+import {CircularProgress, Backdrop} from '@mui/material';
 
 import { useState,useEffect } from 'react';
 import { NavLink ,json } from 'react-router-dom';
@@ -16,6 +17,7 @@ import { NavLink ,json } from 'react-router-dom';
 export default function Home(){
    const [resolved,setresolved] = useState([]);
    const [support,setSupport] = useState([]);
+   const [loading, setLoading] = useState(false);
    const id = localStorage.getItem('_id');
 
    useEffect(()=>{

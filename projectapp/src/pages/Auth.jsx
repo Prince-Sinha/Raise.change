@@ -2,8 +2,10 @@ import Login from './../components/Login';
 import { json, redirect, useNavigate } from 'react-router-dom'; // Correct import statement
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {CircularProgress, Backdrop} from '@mui/material';
 
 export default function Auth() {
+  
   return <><Login />
        <ToastContainer
               position="top-right"
@@ -20,7 +22,9 @@ export default function Auth() {
 }
 
 export async function action({ request }) {
- 
+   
+
+  
     
     const data = await request.formData();
     const auth = {
@@ -47,7 +51,7 @@ export async function action({ request }) {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });     
+        });    
         return null;
     }
 
@@ -68,7 +72,6 @@ export async function action({ request }) {
       progress: undefined,
       theme: "light"
       });
-    
    
     return redirect("/");
     
