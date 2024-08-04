@@ -22,7 +22,15 @@ export default function Department(){
     const handleChange = (event, newValue) => {
          setValue(newValue);
    };
-   console.log(value);
+   const ChangeDate = (d)=>{
+    const isoString = `${d}`;
+    const date = new Date(isoString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+    const formattedDate = `${day}-${month}-${year}`;
+    return formattedDate;
+ }
    useEffect(()=>{
     async function fetchPost(){
         
@@ -114,7 +122,7 @@ export default function Department(){
                    <ul>
                       
                       <li><PeopleAltOutlinedIcon color="success" /><span> <strong>{el.user.name}</strong></span></li>
-                      <li><DriveFileRenameOutlineOutlinedIcon color="primary" /><span>{`${el.createdAt}`}</span></li>
+                      <li><DriveFileRenameOutlineOutlinedIcon color="primary" /><span>{ChangeDate(el.createdAt)}</span></li>
                    </ul>
                    <ul>
                       <li><a href=""><QuestionAnswerOutlinedIcon color="primary"/></a><span>{el.opinions.length}</span></li>
