@@ -115,6 +115,7 @@ export default function FormDialog() {
                 progress: undefined,
                 theme: "colored"
                 });
+                setLoading(prev=> !prev);
                 return;
             }
 
