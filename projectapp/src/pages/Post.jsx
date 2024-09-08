@@ -84,7 +84,7 @@ export default function Post(){
                </div>
                {el.photo ? 
                <div className='content-div-img'>
-                   <img src={`https://backend-92s7.onrender.com/postimg/${el.photo}`} alt="" />
+                   <img src={`${el.photo}`} alt="" />
                 </div> : <div></div> 
                 } 
               
