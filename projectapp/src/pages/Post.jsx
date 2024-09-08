@@ -14,6 +14,7 @@ export default function Post(){
    const [post , setPost] = useState([]);
    const location = useLocation();
    const [loading, setLoading] = useState(false);
+   
 
    const id = localStorage.getItem('_id');
 

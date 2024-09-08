@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState , useRef } from 'react';
 import {Button,TextField,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle, Fab,Autocomplete} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { deptlist } from '../data';
@@ -18,8 +18,10 @@ export default function FormDialog() {
   const [url , setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [flag , setflag] = useState(false);
   const cloud_name = "djflpzpmn";
   const upload_preset = "raise.change";
+  const reffile = useRef(null);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,14 +36,18 @@ export default function FormDialog() {
     
   };
 
+  const handleChange2 = ()=>{
+    setflag(true);
+  }
+
   const handleUpload = async (e)=>{
     const upload_image = new FormData();
-    upload_image.append("file", e.target.files[0]);
+    upload_image.append("file", reffile.current.files[0]);
     upload_image.append("cloud_name", cloud_name);
     upload_image.append("upload_preset", upload_preset);
 
     try{
-        setLoading(prev=> !prev);
+        
         const response = await fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,{
             method: "post",
             body: upload_image,
@@ -49,13 +55,12 @@ export default function FormDialog() {
 
         const data = await response.json();
         if (!response.ok) {
-          throw new Error("Something went wrong");
+          throw new Error("Something went wrong.Please upload image again!");
         }
 
         setImage(data.secure_url);
-        setLoading(prev=> !prev);
-    }catch{
-      toast.error("Something went wrong. Please select image again!", {
+    }catch(msg){
+      toast.error(msg, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -90,13 +95,42 @@ export default function FormDialog() {
             setLoading(prev=> !prev);
             let formData = new FormData(event.currentTarget);
             let formJson = Object.fromEntries(formData.entries());
-            formJson.photo = image;
+            
 
 
             
             const id = localStorage.getItem('_id');
             if(id){
+                if(flag){
+                  const upload_image = new FormData();
+                  upload_image.append("file", reffile.current.files[0]);
+                  upload_image.append("cloud_name", cloud_name);
+                  upload_image.append("upload_preset", upload_preset);
+
+                  const responseImage = await fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,{
+                    method: "post",
+                    body: upload_image,
+                  });
+        
+                const data = await responseImage.json();
+                if (!responseImage.ok) {
+                  toast.error("Error in uploading image!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+                    setLoading(prev=> !prev);
+                    return;
+                }
+        
+                setImage(data.secure_url);
                 
+                formJson.photo = data.secure_url;
                 formJson.user = id;
                 const userresp = await fetch(`https://backend-92s7.onrender.com/api/v1/users/${id}`);
                 const user = await userresp.json();
@@ -104,7 +138,7 @@ export default function FormDialog() {
                 formJson.city = user.data.user.city;
                 const [a,b] = [...formJson.dept.split(' ')];
                 formJson.dept = a + b;
-                console.log(formJson);
+                
                 // multer wali fetch req to generate string 
                 const response = await fetch(`https://backend-92s7.onrender.com/api/v1/posts/create`,{
                   method : 'POST',
@@ -160,7 +194,7 @@ export default function FormDialog() {
                 setLoading(prev=> !prev);
                 return;
             }
-
+          }
           },
         }}
       >
@@ -217,7 +251,7 @@ export default function FormDialog() {
                     rows={4}
                     defaultValue=""
                 />
-                <input type='file' name='photo' accept='image/*' className='file' onChange={handleUpload} />
+                <input type='file' name='photo' accept='image/*' className='file' ref = {reffile} onChange={handleChange2}/>
             </div>
         </DialogContent>
         <DialogActions>
