@@ -183,7 +183,7 @@ export default function FormDialog() {
           </Backdrop>
         <DialogContent>
             <div>
-            <img src={image} alt="" />
+            
                <TextField
                     sx={ {} }
                     autoFocus
