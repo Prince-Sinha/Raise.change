@@ -10,6 +10,7 @@ import Create from './Create'
 import { useState,useEffect } from 'react';
 import { NavLink ,json } from 'react-router-dom';
 import {CircularProgress, Backdrop} from '@mui/material';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 
 export default function Home(){
    const [unresolved,setUnresolved] = useState([]);
@@ -187,14 +188,14 @@ export default function Home(){
                    </ul>
                    <ul>
                       <li><a href=""><QuestionAnswerOutlinedIcon color="primary"/></a><span>{el.opinions.length}</span></li>
-                      <li><a><PollOutlinedIcon color="success" /></a><span>{el.UpVote}</span></li>
+                      <li><a><ThumbUpOffAltIcon color="success" /></a><span>{el.UpVote}</span></li>
                    </ul>
                 </div>
                </div>
                
                {el.photo ?
                <div className='content-div-img'>
-                   <img src={`https://backend-92s7.onrender.com/postimg/${el.photo}`} alt="" /></div>: <div></div> }
+                   <img src={`${el.photo}`} alt="" /></div>: <div></div> }
               
                
         </div>

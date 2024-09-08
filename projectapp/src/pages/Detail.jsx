@@ -135,7 +135,7 @@ export default function Detail(){
             </ListItemButton>
             <div className='createdAt'><span><DriveFileRenameOutlineOutlinedIcon /></span> {postDetail.createdAt} </div>
         
-            {postDetail.photo ? <img src={`https://backend-92s7.onrender.com/postimg/${postDetail.photo}`} alt="" />:<p></p>}
+            {postDetail.photo ? <img src={`${postDetail.photo}`} alt="" />:<p></p>}
             <p>{postDetail.problemStatement}</p>
             <h4>Your Opinion Matters</h4>
             </div>

@@ -404,6 +404,7 @@
   padding: 10px 0px;
 }
 
+
 .content-div ul li h2{
   box-sizing: border-box;
   margin: 0px;
@@ -488,6 +489,10 @@
   -webkit-line-clamp: 4; /* Adjust the number of lines as needed */
   text-overflow:clip;
   text-align: justify;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;
+  color: #454646;
+    font-size: 16px;
+    line-height: 22px;
 }
 
 .icon{

@@ -18,6 +18,8 @@ export default function FormDialog() {
   const [url , setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const cloud_name = "djflpzpmn";
+  const upload_preset = "raise.change";
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -32,6 +34,44 @@ export default function FormDialog() {
     
   };
 
+  const handleUpload = async (e)=>{
+    const upload_image = new FormData();
+    upload_image.append("file", e.target.files[0]);
+    upload_image.append("cloud_name", cloud_name);
+    upload_image.append("upload_preset", upload_preset);
+
+    try{
+        setLoading(prev=> !prev);
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,{
+            method: "post",
+            body: upload_image,
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+
+        setImage(data.secure_url);
+        setLoading(prev=> !prev);
+    }catch{
+      toast.error("Something went wrong. Please select image again!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+        setLoading(prev=> !prev);
+        return;
+    }
+
+    
+  }
+
   
 
   return (
@@ -39,6 +79,7 @@ export default function FormDialog() {
       <div className='createpost'>
                <Fab color="primary" aria-label="add"  onClick={handleClickOpen}>  <AddIcon /></Fab>
       </div>
+      
       <Dialog
         open={open}
         onClose={handleClose}
@@ -49,9 +90,10 @@ export default function FormDialog() {
             setLoading(prev=> !prev);
             let formData = new FormData(event.currentTarget);
             let formJson = Object.fromEntries(formData.entries());
+            formJson.photo = image;
 
-            formJson.photo = formJson.photo.name
-            console.log(formJson);
+
+            
             const id = localStorage.getItem('_id');
             if(id){
                 
@@ -141,7 +183,7 @@ export default function FormDialog() {
           </Backdrop>
         <DialogContent>
             <div>
-            
+            <img src={image} alt="" />
                <TextField
                     sx={ {} }
                     autoFocus
@@ -175,7 +217,7 @@ export default function FormDialog() {
                     rows={4}
                     defaultValue=""
                 />
-                <input type='file' name='photo' accept='image/*' className='file' />
+                <input type='file' name='photo' accept='image/*' className='file' onChange={handleUpload} />
             </div>
         </DialogContent>
         <DialogActions>
