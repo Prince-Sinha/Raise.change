@@ -1,0 +1,38 @@
+[
+    {
+      "title": "Appeal for Road Maintenance and Repair in Jamalpur",
+      "State": "Bihar",
+      "city": "Jamalpur",
+      "status" : false,
+      "user": "65b7ac2e7a51fb2a0204d0bc",
+      "UpVote": 9,
+      "problemStatement": "The condition of the roads in our area has deteriorated significantly, leading to numerous issues such as potholes, damage, and overall inconvenience.The current state of the roads poses a threat to both motorists and pedestrians alike. Commuting has become a daily challenge as drivers navigate through potholes and damaged sections, risking damage to their vehicles. \n Additionally, the unsafe conditions for pedestrians are alarming, especially for children and the elderly.We, the residents of [Your Locality], kindly request the Municipal Cooperation of Bhopal to take prompt action in addressing the road maintenance and repair needs in our area. We believe that timely intervention is crucial to preventing further damage and ensuring the safety and well-being of the community.",
+      "image": "image.jpg",
+    
+      "dept":"Municipal Cooperation"
+
+    },
+    {
+      "title": " Poor Drainage System Causing Water Accumulation in Bandra",
+      "State": "Maharashtra",
+      "city": "Mumbai",
+      "status" : false,
+      "user": "65b7ac2e7a51fb2a0204d0bc",
+      "UpVote": 4,
+      "problemStatement": "The current state of the sewage system in our area is a matter of grave concern, as it fails to function efficiently, resulting in waterlogging and inadequate drainage.During the rainy season, our locality faces severe challenges due to the improper functioning of the sewage system. The water fails to drain properly, leading to waterlogging in several areas. \n This not only poses a threat to public health but also causes inconvenience to the residents, hindering daily activities and creating a breeding ground for various waterborne diseases.",
+      "image": "image2.jpg",
+      "dept" : "Municipal Cooperation"
+
+    },
+    {
+      "title": "Unauthorized Deduction from Bank Account",
+      "State": "Madhaya Pradesh",
+      "city": "Bhopal",
+      "status" : false,
+      "user": "65b7ac2e7a51fb2a0204d0bc",
+      "UpVote": 1,
+      "problemStatement": " I received a call from an individual claiming to be from [Bank Name]. During the call, I was provided with information that led to unauthorized deductions from my bank account. I immediately realized the fraudulent nature of the call and took action to secure my account.\n I have already reported the incident to my bank, and they are conducting their own investigation. However, I believe it is crucial to involve the Cyber Security Department to ensure a comprehensive review of the incident and take appropriate measures to prevent such incidents from happening to others.",
+      "dept" : "CyberSecurity Department"
+    }
+    
+  ]

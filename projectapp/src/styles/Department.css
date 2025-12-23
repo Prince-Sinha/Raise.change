@@ -1,0 +1,366 @@
+/* Department Dashboard Responsive Styles */
+
+/* Mobile First Approach */
+.department-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.department-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.department-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.department-logo {
+  height: 40px;
+}
+
+.department-title h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.department-subtitle {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.department-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+/* Stats Cards Responsive */
+.stat-card {
+  border-radius: 1rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+.stat-icon {
+  font-size: 3rem;
+  opacity: 0.8;
+}
+
+/* Post Cards Responsive */
+.post-card {
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+}
+
+.post-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.post-card-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.post-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* User Info Mobile */
+.post-user-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Tab Labels for Mobile */
+.mobile-tab-label {
+  display: none;
+}
+
+.desktop-tab-label {
+  display: inline;
+}
+
+/* Pie Chart Container */
+.chart-container {
+  width: 100%;
+  height: 300px;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* ==================== TABLET (768px+) ==================== */
+@media (min-width: 768px) {
+  .department-header {
+    padding: 1.5rem 2rem;
+  }
+
+  .department-header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .department-logo {
+    height: 50px;
+  }
+
+  .department-title h1 {
+    font-size: 1.5rem;
+  }
+
+  .department-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .department-actions {
+    justify-content: flex-end;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+  }
+
+  .stat-icon {
+    font-size: 4rem;
+  }
+
+  .post-card-image {
+    height: 250px;
+  }
+
+  .post-card-actions {
+    gap: 1rem;
+  }
+
+  .chart-container {
+    height: 350px;
+  }
+
+  .mobile-tab-label {
+    display: inline;
+  }
+}
+
+/* ==================== DESKTOP (1024px+) ==================== */
+@media (min-width: 1024px) {
+  .department-header {
+    padding: 2rem 4rem;
+  }
+
+  .department-logo {
+    height: 60px;
+  }
+
+  .department-title h1 {
+    font-size: 1.75rem;
+  }
+
+  .department-subtitle {
+    font-size: 1rem;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .stat-label {
+    font-size: 1.1rem;
+  }
+
+  .stat-icon {
+    font-size: 5rem;
+  }
+
+  .post-card {
+    margin-bottom: 2rem;
+  }
+
+  .post-card-image {
+    height: 300px;
+  }
+
+  .chart-container {
+    height: 400px;
+  }
+}
+
+/* ==================== LARGE DESKTOP (1440px+) ==================== */
+@media (min-width: 1440px) {
+  .department-logo {
+    height: 70px;
+  }
+
+  .department-title h1 {
+    font-size: 2rem;
+  }
+
+  .stat-card-content {
+    padding: 2rem;
+  }
+
+  .chart-container {
+    height: 450px;
+  }
+}
+
+/* ==================== MOBILE SPECIFIC (max 640px) ==================== */
+@media (max-width: 640px) {
+  .department-header {
+    padding: 1rem;
+  }
+
+  .department-logo {
+    height: 35px;
+  }
+
+  .department-title h1 {
+    font-size: 1rem;
+  }
+
+  .department-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .stat-card-content {
+    padding: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .stat-icon {
+    font-size: 2.5rem;
+  }
+
+  .post-card {
+    margin-bottom: 1rem;
+  }
+
+  .post-card-image {
+    height: 180px;
+  }
+
+  .post-card-actions {
+    flex-direction: column;
+  }
+
+  .post-card-actions button {
+    width: 100%;
+  }
+
+  .post-user-info {
+    font-size: 0.85rem;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+
+  /* Hide tab text on mobile, show only icons */
+  .desktop-tab-label {
+    display: none;
+  }
+
+  .mobile-tab-label {
+    display: inline;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  .post-card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .department-header,
+  .department-actions,
+  .post-card-actions {
+    display: none;
+  }
+
+  .post-card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .post-card,
+  .stat-card {
+    transition: none;
+  }
+  
+  .post-card:hover,
+  .stat-card:hover {
+    transform: none;
+  }
+}
